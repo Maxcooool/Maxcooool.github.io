@@ -14,7 +14,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
+  <meta name="description" content="前言需求很简单,就是在小程序中嵌入一个H5页面，并且提供一个按钮可以跳转到这个小程序的其他页面。">
   <meta name="author" content="MaxCool">
   <meta name="keywords" content="">
   
@@ -228,7 +228,10 @@
             <h1 style="display: none">微信小程序嵌入H5页面</h1>
             
             <div class="markdown-body">
-              <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>需求很简单,就是在小程序中嵌入一个H5页面，并且提供一个按钮可以跳转到这个小程序的其他页面。因为笔者是第一次接触，所以做一下记录：<br>主要用到微信小程序的 <code>web-view</code> 组件，详细用法&gt;&gt;&gt; <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/component/web-view%E3%80%82html">web-view 微信官方文档</a>。<br><img src="/img/article/office.png" srcset="/img/loading.gif" lazyload alt="属性简介"><br>        需要注意的是个人小程序<strong>不支持！</strong> </p>
+              <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>需求很简单,就是在小程序中嵌入一个H5页面，并且提供一个按钮可以跳转到这个小程序的其他页面。</p>
+<span id="more"></span>
+
+<p>因为笔者是第一次接触，所以做一下记录：<br>主要用到微信小程序的 <code>web-view</code> 组件，详细用法&gt;&gt;&gt; <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/component/web-view%E3%80%82html">web-view 微信官方文档</a>。<br><img src="/img/article/office.png" srcset="/img/loading.gif" lazyload alt="属性简介"><br>        需要注意的是个人小程序<strong>不支持！</strong> </p>
 <h4 id="1-嵌入H5"><a href="#1-嵌入H5" class="headerlink" title="1. 嵌入H5"></a>1. 嵌入H5</h4><p>当我们写好H5后，可以在小程序页面中通过以下代码嵌入页面，页面会自动铺满，需要做好移动端适配：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">&lt;!--pages/test/test。wxml--&gt;<br>&lt;web-view src=<span class="hljs-string">&quot;http://192。168。xx。xxx:8080/#/&quot;</span>&gt;&lt;/web-view&gt;<br></code></pre></td></tr></table></figure>
 <p>上线后，这里的域名需要加入小程序的合法域名中才可嵌入。本地测试时，在小程序本地设置中勾选不校验域名即可！</p>
