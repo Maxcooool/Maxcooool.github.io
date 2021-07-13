@@ -233,7 +233,7 @@
 
 <p>因为笔者是第一次接触，所以做一下记录：<br>主要用到微信小程序的 <code>web-view</code> 组件，详细用法&gt;&gt;&gt; <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/component/web-view%E3%80%82html">web-view 微信官方文档</a>。<br><img src="/img/article/office.png" srcset="/img/loading.gif" lazyload alt="属性简介"><br>        需要注意的是个人小程序<strong>不支持！</strong> </p>
 <h4 id="1-嵌入H5"><a href="#1-嵌入H5" class="headerlink" title="1. 嵌入H5"></a>1. 嵌入H5</h4><p>当我们写好H5后，可以在小程序页面中通过以下代码嵌入页面，页面会自动铺满，需要做好移动端适配：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">&lt;!--pages/test/test。wxml--&gt;<br>&lt;web-view src=<span class="hljs-string">&quot;http://192。168。xx。xxx:8080/#/&quot;</span>&gt;&lt;/web-view&gt;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">&lt;!--pages/test/test.wxml--&gt;<br>&lt;web-view src=<span class="hljs-string">&quot;http://192.168.xx.xxx:8080/#/&quot;</span>&gt;&lt;/web-view&gt;<br></code></pre></td></tr></table></figure>
 <p>上线后，这里的域名需要加入小程序的合法域名中才可嵌入。本地测试时，在小程序本地设置中勾选不校验域名即可！</p>
 <h4 id="2-跳转小程序内页面"><a href="#2-跳转小程序内页面" class="headerlink" title="2. 跳转小程序内页面"></a>2. 跳转小程序内页面</h4><p>需要引入微信SDK，可以直接引入官方提供的CDN：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">http:<span class="hljs-comment">//res.wx.qq.com/open/js/jweixin-1.6.0.js</span><br></code></pre></td></tr></table></figure>
@@ -242,9 +242,9 @@
 <p>在H5页面上中引入：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> wx from <span class="hljs-string">&#x27;weixin-js-sdk&#x27;</span>;<br></code></pre></td></tr></table></figure>
 <p>调用微信开放接口进行页面跳转：<br>tabbar页面：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">wx.miniProgram。switchTab(&#123;<br>     <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/pages/home/home&quot;</span>,<br>   &#125;);<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">wx.miniProgram.switchTab(&#123;<br>     <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/pages/home/home&quot;</span>,<br>   &#125;);<br></code></pre></td></tr></table></figure>
 <p>非tabbar页面：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">wx.miniProgram。navigateTo(&#123;<br>    <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/pages/smile/smile&quot;</span>,<br>  &#125;);<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">wx.miniProgram.navigateTo(&#123;<br>    <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;/pages/smile/smile&quot;</span>,<br>  &#125;);<br></code></pre></td></tr></table></figure>
 
 <h4 id="思考："><a href="#思考：" class="headerlink" title="思考："></a>思考：</h4><p>看了一些资料，发现有跳到其他小程序的需求，目前看到的解决方案就是跳到一个中继页（小程序自身页面），然后通过小程序跳转到其他小程序。<br>以上！</p>
 
@@ -252,6 +252,13 @@
             <hr>
             <div>
               <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/miniapp/">miniapp</a>
+                    
+                  </div>
                 
                 
                   <div class="post-meta">
