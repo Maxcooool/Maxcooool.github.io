@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>H5页面禁用向下滑动</title>
+    <link href="/2021/07/15/H5%E9%A1%B5%E9%9D%A2%E7%A6%81%E7%94%A8%E5%90%91%E4%B8%8B%E6%BB%91%E5%8A%A8/"/>
+    <url>/2021/07/15/H5%E9%A1%B5%E9%9D%A2%E7%A6%81%E7%94%A8%E5%90%91%E4%B8%8B%E6%BB%91%E5%8A%A8/</url>
+    
+    <content type="html"><![CDATA[<p>H5页面真机演示时，发现页面可以向下滑动，可以通过CSS属性禁用，代码如下：</p><span id="more"></span><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css">// 禁用页面滑动<br><span class="hljs-attribute">pointer-events</span>: auto;<br>touch-action: none;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>CSS</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>css</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>《招魂歌》</title>
     <link href="/2021/07/14/%E3%80%8A%E6%8B%9B%E9%AD%82%E6%AD%8C%E3%80%8B/"/>
     <url>/2021/07/14/%E3%80%8A%E6%8B%9B%E9%AD%82%E6%AD%8C%E3%80%8B/</url>
