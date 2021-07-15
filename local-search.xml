@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>web-view组件视频无法自动播放</title>
+    <link href="/2021/07/15/%5B%E5%B7%B2%E8%A7%A3%E5%86%B3%5Dweb-view%E7%BB%84%E4%BB%B6%E8%A7%86%E9%A2%91%E6%97%A0%E6%B3%95%E8%87%AA%E5%8A%A8%E6%92%AD%E6%94%BE/"/>
+    <url>/2021/07/15/%5B%E5%B7%B2%E8%A7%A3%E5%86%B3%5Dweb-view%E7%BB%84%E4%BB%B6%E8%A7%86%E9%A2%91%E6%97%A0%E6%B3%95%E8%87%AA%E5%8A%A8%E6%92%AD%E6%94%BE/</url>
+    
+    <content type="html"><![CDATA[<p>之前在微信小程序中嵌入了H5，今天发现视频在模拟器和网页中正常，但是真机上无法播放的问题。</p><span id="more"></span><p><strong>做过的尝试：</strong></p><ul><li>检查链接是否为https</li><li>是否添加合法域名</li><li>改为本地资源加载</li></ul><p>均以失败告终。</p><p>观察后发现，并不是资源加载问题，真机上视频出现完整进度条，说明加载完毕。经检验，原来是原生video的autoplay属性不被web-view支持，导致视频不能播放的bug。改为调用DOM对象的play() 方法实现!</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">mounted</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-built_in">this</span>.videoCtx = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;id_of_video&quot;</span>);<br>    <span class="hljs-comment">// 自动播放</span><br>    <span class="hljs-built_in">this</span>.videoCtx.play();<br> &#125;<br></code></pre></td></tr></table></figure><p>附上移动端video标签的一些属性：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">video</span></span><br><span class="hljs-tag">    <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;video&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">preload</span>=<span class="hljs-string">&quot;auto&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">x-webkit-airplay</span>=<span class="hljs-string">&quot;true&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">webkit-playsinline</span>=<span class="hljs-string">&quot;true&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">playsinline</span></span><br><span class="hljs-tag">    <span class="hljs-attr">x5-video-player-type</span>=<span class="hljs-string">&quot;h5&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">x5-video-player-fullscreen</span>=<span class="hljs-string">&quot;true&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">loop</span></span><br><span class="hljs-tag">    <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;../../../public/media/xxxxx.mp4&quot;</span></span><br><span class="hljs-tag">&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>WeChat</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>miniapp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>H5页面禁用向下滑动</title>
     <link href="/2021/07/15/H5%E9%A1%B5%E9%9D%A2%E7%A6%81%E7%94%A8%E5%90%91%E4%B8%8B%E6%BB%91%E5%8A%A8/"/>
     <url>/2021/07/15/H5%E9%A1%B5%E9%9D%A2%E7%A6%81%E7%94%A8%E5%90%91%E4%B8%8B%E6%BB%91%E5%8A%A8/</url>
@@ -121,31 +146,6 @@
     <tags>
       
       <tag>miniapp</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="/2021/07/13/hello-world/"/>
-    <url>/2021/07/13/hello-world/</url>
-    
-    <content type="html"><![CDATA[<p>Welcome to my blog!</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Diary</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>hello</tag>
       
     </tags>
     
