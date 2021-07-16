@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Hexo-fluid主题添加百度统计</title>
+    <link href="/2021/07/16/Hexo-%E6%B7%BB%E5%8A%A0%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1/"/>
+    <url>/2021/07/16/Hexo-%E6%B7%BB%E5%8A%A0%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1/</url>
+    
+    <content type="html"><![CDATA[<p>为博客添加百度统计，了解网站的访问情况。</p><span id="more"></span><h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><ul><li>注册一个百度账号，登录<a href="https://tongji.baidu.com/web/welcome/login">百度统计</a></li></ul><h4 id="添加统计"><a href="#添加统计" class="headerlink" title="添加统计"></a>添加统计</h4><p>进入页面，管理——新增网站</p><p><img src="https://hexo-maxcool.oss-cn-shanghai.aliyuncs.com/img/article_content/tj01.png"></p><p>填写好网站信息：</p><p><img src="https://hexo-maxcool.oss-cn-shanghai.aliyuncs.com/img/article_content/tj02.png"></p><p>获取百度统计key：</p><p><img src="https://hexo-maxcool.oss-cn-shanghai.aliyuncs.com/img/article_content/tj03.png"></p><p>在根目录 _config.fluid.yml 文件中添加key即可：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># 网页访问统计</span><br><span class="hljs-attr">web_analytics:</span>  <br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-comment"># 百度统计的 Key，值需要获取下方链接中 `hm.js?` 后边的字符串</span><br>  <span class="hljs-attr">baidu:</span> <span class="hljs-string">9c73abxxxxxxxxxxxxxxxxxx568579</span><br></code></pre></td></tr></table></figure><p><strong>参考</strong>：</p><p><a href="https://www.cnblogs.com/yizhidaozuihou/p/12445923.html">Hexo添加百度统计</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Hexo</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>hexo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>web-view组件视频无法自动播放</title>
     <link href="/2021/07/15/%5B%E5%B7%B2%E8%A7%A3%E5%86%B3%5Dweb-view%E7%BB%84%E4%BB%B6%E8%A7%86%E9%A2%91%E6%97%A0%E6%B3%95%E8%87%AA%E5%8A%A8%E6%92%AD%E6%94%BE/"/>
     <url>/2021/07/15/%5B%E5%B7%B2%E8%A7%A3%E5%86%B3%5Dweb-view%E7%BB%84%E4%BB%B6%E8%A7%86%E9%A2%91%E6%97%A0%E6%B3%95%E8%87%AA%E5%8A%A8%E6%92%AD%E6%94%BE/</url>
