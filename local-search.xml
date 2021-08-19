@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>关于vite自动压缩图片的问题</title>
+    <link href="/2021/08/19/%E5%85%B3%E4%BA%8Evite%E8%87%AA%E5%8A%A8%E5%8E%8B%E7%BC%A9%E5%9B%BE%E7%89%87%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <url>/2021/08/19/%E5%85%B3%E4%BA%8Evite%E8%87%AA%E5%8A%A8%E5%8E%8B%E7%BC%A9%E5%9B%BE%E7%89%87%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>&emsp;&emsp;在使用 <code>vben</code> 后台系统的时候，发现打包后的登录页大图十分模糊！<span id="more"></span>显然是 <code>vite</code> 打包时进行了压缩操作，进一步发现原来是 <code>imagemin</code> 插件在作祟，前往根目录下<code>build\vite\plugin</code>路径修改配置，实现图片不被压缩！</p><p>&emsp;&emsp;在 <code>vben</code> 源码中已给出 <code>imagemin</code> 文档链接：<a href="https://github.com/anncwb/vite-plugin-imagemin">https://github.com/anncwb/vite-plugin-imagemin</a> ，配置如下：</p><table><thead><tr><th>params</th><th>type</th><th>default</th><th>default</th></tr></thead><tbody><tr><td>verbose</td><td><code>boolean</code></td><td><code>true</code></td><td>Whether to output the compressed result in the console</td></tr><tr><td>filter</td><td><code>RegExp or (file: string) =&gt; boolean</code></td><td>-</td><td>Specify which resources are not compressed</td></tr><tr><td>disable</td><td><code>boolean</code></td><td><code>false</code></td><td>Whether to disable</td></tr><tr><td>svgo</td><td><code>object</code> or <code>false</code></td><td>-</td><td>See <a href="https://github.com/svg/svgo/#what-it-can-do">Options</a></td></tr><tr><td>gifsicle</td><td><code>object</code> or <code>false</code></td><td>-</td><td>See <a href="https://github.com/imagemin/imagemin-gifsicle">Options</a></td></tr><tr><td>mozjpeg</td><td><code>object</code> or <code>false</code></td><td>-</td><td>See <a href="https://github.com/imagemin/imagemin-mozjpeg">Options</a></td></tr><tr><td>optipng</td><td><code>object</code> or <code>false</code></td><td>-</td><td>See <a href="https://github.com/imagemin/imagemin-optipng">Options</a></td></tr><tr><td>pngquant</td><td><code>object</code> or <code>false</code></td><td>-</td><td>See <a href="https://github.com/imagemin/imagemin-pngquant">Options</a></td></tr><tr><td>webp</td><td><code>object</code> or <code>false</code></td><td>-</td><td>See <a href="https://github.com/imagemin/imagemin-webp">Options</a></td></tr></tbody></table><p>&emsp;&emsp;我们需要关注的是 filter 属性，它允许我们定义文件是否被压缩。<br>于是有以下代码：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> viteImagemin <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vite-plugin-imagemin&quot;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">configImageminPlugin</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> plugin = viteImagemin(&#123;<br>    <span class="hljs-attr">gifsicle</span>: &#123;<br>      <span class="hljs-attr">optimizationLevel</span>: <span class="hljs-number">7</span>,<br>      <span class="hljs-attr">interlaced</span>: <span class="hljs-literal">false</span>,<br>    &#125;,<br>    <span class="hljs-attr">optipng</span>: &#123;<br>      <span class="hljs-attr">optimizationLevel</span>: <span class="hljs-number">7</span>,<br>    &#125;,<br>    <span class="hljs-attr">mozjpeg</span>: &#123;<br>      <span class="hljs-attr">quality</span>: <span class="hljs-number">8</span>,<br>    &#125;,<br>    <span class="hljs-attr">pngquant</span>: &#123;<br>      <span class="hljs-attr">quality</span>: [<span class="hljs-number">0.8</span>, <span class="hljs-number">0.9</span>],<br>      <span class="hljs-attr">speed</span>: <span class="hljs-number">4</span>,<br>    &#125;,<br>    <span class="hljs-attr">svgo</span>: &#123;<br>      <span class="hljs-attr">plugins</span>: [<br>        &#123;<br>          <span class="hljs-attr">removeViewBox</span>: <span class="hljs-literal">false</span>,<br>        &#125;,<br>        &#123;<br>          <span class="hljs-attr">removeEmptyAttrs</span>: <span class="hljs-literal">false</span>,<br>        &#125;,<br>      ],<br>    &#125;,<br>    <span class="hljs-comment">// 自定义不被压缩的文件</span><br>    <span class="hljs-attr">filter</span>: <span class="hljs-function">(<span class="hljs-params">file</span>) =&gt;</span> &#123;<br>      <span class="hljs-keyword">return</span> [<span class="hljs-string">&quot;login_pv.jpg&quot;</span>, <span class="hljs-string">&quot;login_bg.jpg&quot;</span>].indexOf(file) &gt; -<span class="hljs-number">1</span>;<br>    &#125;,<br>  &#125;);<br>  <span class="hljs-keyword">return</span> plugin;<br>&#125;<br></code></pre></td></tr></table></figure><p>以上！</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Vue3</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>vite</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hexo-valine评论系统</title>
     <link href="/2021/07/16/Hexo-valine%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/"/>
     <url>/2021/07/16/Hexo-valine%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</url>

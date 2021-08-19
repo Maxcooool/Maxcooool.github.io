@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="有朋友私信我说需要一个评论区，需求堪比白云的《月子2》！">
+  <meta name="description" content="&amp;emsp;&amp;emsp;在使用 vben 后台系统的时候，发现打包后的登录页大图十分模糊！">
   <meta name="author" content="MaxCool">
   <meta name="keywords" content="">
   
-  <title>Hexo-valine评论系统 - MaxCool-Space</title>
+  <title>关于vite自动压缩图片的问题 - MaxCool-Space</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -158,12 +158,12 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://hexo-maxcool.oss-cn-shanghai.aliyuncs.com/img/index_img/hexo.png') no-repeat center center;
+         style="background: url('https://hexo-maxcool.oss-cn-shanghai.aliyuncs.com/img/article_banner/vite.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Hexo-valine评论系统">
+            <span class="h2" id="subtitle" title="关于vite自动压缩图片的问题">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-07-16 14:12" pubdate>
-        2021年7月16日 下午
+      <time datetime="2021-08-19 15:36" pubdate>
+        2021年8月19日 下午
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      227 字
+      299 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      4
        分钟
     </span>
   
@@ -233,27 +233,79 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hexo-valine评论系统</h1>
+            <h1 style="display: none">关于vite自动压缩图片的问题</h1>
             
             <div class="markdown-body">
-              <p>有朋友私信我说需要一个评论区，需求堪比白云的《月子2》！</p>
-<span id="more"></span>
+              <p>&emsp;&emsp;在使用 <code>vben</code> 后台系统的时候，发现打包后的登录页大图十分模糊！<span id="more"></span>显然是 <code>vite</code> 打包时进行了压缩操作，进一步发现原来是 <code>imagemin</code> 插件在作祟，前往根目录下<code>build\vite\plugin</code>路径修改配置，实现图片不被压缩！</p>
+<p>&emsp;&emsp;在 <code>vben</code> 源码中已给出 <code>imagemin</code> 文档链接：<a target="_blank" rel="noopener" href="https://github.com/anncwb/vite-plugin-imagemin">https://github.com/anncwb/vite-plugin-imagemin</a> ，配置如下：</p>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>default</th>
+<th>default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>verbose</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>Whether to output the compressed result in the console</td>
+</tr>
+<tr>
+<td>filter</td>
+<td><code>RegExp or (file: string) =&gt; boolean</code></td>
+<td>-</td>
+<td>Specify which resources are not compressed</td>
+</tr>
+<tr>
+<td>disable</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>Whether to disable</td>
+</tr>
+<tr>
+<td>svgo</td>
+<td><code>object</code> or <code>false</code></td>
+<td>-</td>
+<td>See <a target="_blank" rel="noopener" href="https://github.com/svg/svgo/#what-it-can-do">Options</a></td>
+</tr>
+<tr>
+<td>gifsicle</td>
+<td><code>object</code> or <code>false</code></td>
+<td>-</td>
+<td>See <a target="_blank" rel="noopener" href="https://github.com/imagemin/imagemin-gifsicle">Options</a></td>
+</tr>
+<tr>
+<td>mozjpeg</td>
+<td><code>object</code> or <code>false</code></td>
+<td>-</td>
+<td>See <a target="_blank" rel="noopener" href="https://github.com/imagemin/imagemin-mozjpeg">Options</a></td>
+</tr>
+<tr>
+<td>optipng</td>
+<td><code>object</code> or <code>false</code></td>
+<td>-</td>
+<td>See <a target="_blank" rel="noopener" href="https://github.com/imagemin/imagemin-optipng">Options</a></td>
+</tr>
+<tr>
+<td>pngquant</td>
+<td><code>object</code> or <code>false</code></td>
+<td>-</td>
+<td>See <a target="_blank" rel="noopener" href="https://github.com/imagemin/imagemin-pngquant">Options</a></td>
+</tr>
+<tr>
+<td>webp</td>
+<td><code>object</code> or <code>false</code></td>
+<td>-</td>
+<td>See <a target="_blank" rel="noopener" href="https://github.com/imagemin/imagemin-webp">Options</a></td>
+</tr>
+</tbody></table>
+<p>&emsp;&emsp;我们需要关注的是 filter 属性，它允许我们定义文件是否被压缩。<br>于是有以下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> viteImagemin <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vite-plugin-imagemin&quot;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">configImageminPlugin</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> plugin = viteImagemin(&#123;<br>    <span class="hljs-attr">gifsicle</span>: &#123;<br>      <span class="hljs-attr">optimizationLevel</span>: <span class="hljs-number">7</span>,<br>      <span class="hljs-attr">interlaced</span>: <span class="hljs-literal">false</span>,<br>    &#125;,<br>    <span class="hljs-attr">optipng</span>: &#123;<br>      <span class="hljs-attr">optimizationLevel</span>: <span class="hljs-number">7</span>,<br>    &#125;,<br>    <span class="hljs-attr">mozjpeg</span>: &#123;<br>      <span class="hljs-attr">quality</span>: <span class="hljs-number">8</span>,<br>    &#125;,<br>    <span class="hljs-attr">pngquant</span>: &#123;<br>      <span class="hljs-attr">quality</span>: [<span class="hljs-number">0.8</span>, <span class="hljs-number">0.9</span>],<br>      <span class="hljs-attr">speed</span>: <span class="hljs-number">4</span>,<br>    &#125;,<br>    <span class="hljs-attr">svgo</span>: &#123;<br>      <span class="hljs-attr">plugins</span>: [<br>        &#123;<br>          <span class="hljs-attr">removeViewBox</span>: <span class="hljs-literal">false</span>,<br>        &#125;,<br>        &#123;<br>          <span class="hljs-attr">removeEmptyAttrs</span>: <span class="hljs-literal">false</span>,<br>        &#125;,<br>      ],<br>    &#125;,<br>    <span class="hljs-comment">// 自定义不被压缩的文件</span><br>    <span class="hljs-attr">filter</span>: <span class="hljs-function">(<span class="hljs-params">file</span>) =&gt;</span> &#123;<br>      <span class="hljs-keyword">return</span> [<span class="hljs-string">&quot;login_pv.jpg&quot;</span>, <span class="hljs-string">&quot;login_bg.jpg&quot;</span>].indexOf(file) &gt; -<span class="hljs-number">1</span>;<br>    &#125;,<br>  &#125;);<br>  <span class="hljs-keyword">return</span> plugin;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h4 id="注册LeanCloud"><a href="#注册LeanCloud" class="headerlink" title="注册LeanCloud"></a>注册LeanCloud</h4><p>Valine的评论数据都储存在Leancloud上，所以我们要去<a target="_blank" rel="noopener" href="https://www.leancloud.cn/"> leancloud官网</a> 注册一个账户，并完成实名认证。</p>
-<h4 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h4><p><img src="https://hexo-maxcool.oss-cn-shanghai.aliyuncs.com/img/article_content/leancloud00.png" srcset="/img/loading.gif" lazyload></p>
-<p>开发版是虽然免费的，但是api调用量足够用了。</p>
-<p><img src="https://hexo-maxcool.oss-cn-shanghai.aliyuncs.com/img/article_content/leancloud01.png" srcset="/img/loading.gif" lazyload alt="计费规则"></p>
-<h4 id="核心数据"><a href="#核心数据" class="headerlink" title="核心数据"></a>核心数据</h4><p>我们需要 AppID 和 AppKey</p>
-<p><img src="https://hexo-maxcool.oss-cn-shanghai.aliyuncs.com/img/article_content/leancloud03.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>hexo 根目录下 _config.fluid.yml 中配置以下代码：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># 开启评论需要先设置 `post: comments: enable: true`，然后根据 `type` 设置插件参数</span><br><span class="hljs-attr">post:</span><br>  <span class="hljs-attr">comments:</span><br>    <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">type:</span> <span class="hljs-string">valine</span><br><span class="hljs-comment"># Valine 插件</span><br><span class="hljs-attr">valine:</span><br>  <span class="hljs-comment">#AppID</span><br>  <span class="hljs-attr">appId:</span> <span class="hljs-string">m72xxxxxxxxxx-xxxxxxxxxoHsz</span><br>  <span class="hljs-comment">#AppKey</span><br>  <span class="hljs-attr">appKey:</span> <span class="hljs-string">6muIxxxxxxxxxxxxgLU</span><br>  <span class="hljs-attr">placeholder:</span> <span class="hljs-string">说点什么...</span><br>  <span class="hljs-attr">path:</span> <span class="hljs-string">window.location.pathname</span><br>  <span class="hljs-attr">avatar:</span> <span class="hljs-string">retro</span><br>  <span class="hljs-attr">meta:</span> [<span class="hljs-string">&#x27;nick&#x27;</span>]<br>  <span class="hljs-attr">pageSize:</span> <span class="hljs-number">10</span><br>  <span class="hljs-attr">lang:</span> <span class="hljs-string">zh-CN</span><br>  <span class="hljs-attr">highlight:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">recordIP:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">serverURLs:</span> <span class="hljs-string">&#x27;&#x27;</span><br>  <span class="hljs-attr">emojiCDN:</span> <br>  <span class="hljs-attr">emojiMaps:</span><br>  <span class="hljs-attr">enableQQ:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">requiredFields:</span> []<br></code></pre></td></tr></table></figure>
-
-<p>之后分别执行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">$ hexo clean<br>$ hexo d -g<br></code></pre></td></tr></table></figure>
-
-<p>即可部署！</p>
-<h4 id="管理评论"><a href="#管理评论" class="headerlink" title="管理评论"></a>管理评论</h4><p>在 LeanCloud 数据存储——结构化数据中可以对评论内容进行管理</p>
-<p><img src="https://hexo-maxcool.oss-cn-shanghai.aliyuncs.com/img/article_content/leancloud05.png" srcset="/img/loading.gif" lazyload></p>
+<p>以上！</p>
 
             </div>
             <hr>
@@ -263,7 +315,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Hexo/">Hexo</a>
+                      <a class="hover-with-bg" href="/categories/Vue3/">Vue3</a>
                     
                   </div>
                 
@@ -271,7 +323,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/hexo/">hexo</a>
+                      <a class="hover-with-bg" href="/tags/vite/">vite</a>
                     
                   </div>
                 
@@ -282,18 +334,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/08/19/%E5%85%B3%E4%BA%8Evite%E8%87%AA%E5%8A%A8%E5%8E%8B%E7%BC%A9%E5%9B%BE%E7%89%87%E7%9A%84%E9%97%AE%E9%A2%98/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">关于vite自动压缩图片的问题</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/07/16/Hexo-%E6%B7%BB%E5%8A%A0%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1/">
-                        <span class="hidden-mobile">Hexo-fluid主题添加百度统计</span>
+                      <a href="/2021/07/16/Hexo-valine%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">
+                        <span class="hidden-mobile">Hexo-valine评论系统</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
